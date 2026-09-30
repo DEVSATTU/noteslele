@@ -3,310 +3,403 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Explore NotesLeLe for clear, exam-ready study notes. Get free resources and premium notes designed to boost your preparation and learning.">
-
-    <!--  seo optimization -->
-    <!-- Primary Meta Tags -->
-<meta name="title" content="NotesLeLe - Free & Paid Study Notes for Students">
-<meta name="description" content="NotesLeLe offers high-quality study notes for students. Access both free and premium notes for school, competitive exams, and self-study in one place.">
-<meta name="keywords" content="study notes, free notes, paid notes, exam notes, student notes, NotesLeLe, study material, competitive exam notes">
-<meta name="author" content="NotesLeLe">
-
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://noteslele.netlify.app/">
-<meta property="og:title" content="NotesLeLe - Free & Paid Study Notes">
-<meta property="og:description" content="Get high-quality free and premium study notes for better exam preparation.">
-<meta property="og:image" content="https://noteslele.netlify.app/preview.jpg">
-
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://noteslele.netlify.app/">
-<meta name="twitter:title" content="NotesLeLe - Free & Paid Study Notes">
-<meta name="twitter:description" content="Explore free and premium study notes for students on NotesLeLe.">
-<meta name="twitter:image" content="https://noteslele.netlify.app/preview.jpg">
-
-<!-- Favicon -->
-<link rel="icon" href="/favicon.ico" type="image/x-icon">
-
-<!-- Canonical URL -->
-<link rel="canonical" href="https://noteslele.netlify.app/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="Notes ki Dukan - The Product of Code NEURONS. Professional study notes for students.">
     
-    <title>NotesLeLe – Notes LeLe, Tension DeDe 😄</title>
+    <title>Notes ki Dukan – Code NEURONS</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Cashfree SDK -->
+    <script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
+
+    <!-- Dynamic & Colorful App Styles -->
+    <style>
+        /* Base & Reset */
+        :root {
+            --primary: #1e1b4b;
+            --primary-light: #3730a3;
+            --accent: #4f46e5;
+            --accent-gradient: linear-gradient(135deg, #4f46e5 0%, #ec4899 100%);
+            --accent-gradient-hover: linear-gradient(135deg, #4338ca 0%, #be185d 100%);
+            --bg-color: #f1f5f9;
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --text-dark: #0f172a;
+            --text-light: #64748b;
+            --border: rgba(226, 232, 240, 0.8);
+        }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: url('https://www.transparenttextures.com/patterns/cubes.png'), linear-gradient(to bottom right, #f8fafc, #e2e8f0);
+            color: var(--text-dark); margin: 0; padding-bottom: 75px; 
+            overflow-x: hidden; width: 100vw; min-height: 100vh;
+        }
+        
+        /* Diwali Lights */
+        .diwali-lights {
+            position: absolute; top: 0; left: 0; right: 0; height: 35px;
+            background: url('https://i.pinimg.com/originals/93/9e/d9/939ed9f5799a4c1598ce30e9d6d87178.png') repeat-x top center;
+            background-size: auto 100%; z-index: 1000; pointer-events: none;
+            opacity: 0.9;
+        }
+
+        /* App Tabs Logic */
+        .app-tab { display: none; animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        .app-tab.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Header (Glassmorphism) */
+        .site-header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 5% 15px; 
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+            position: sticky; top: 0; z-index: 100; padding-top: 35px; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+        }
+        .header-left { display: flex; flex-direction: column; }
+        .site-title { 
+            font-size: clamp(20px, 5vw, 24px); 
+            font-weight: 800; margin: 0; 
+            background: var(--accent-gradient);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+        .site-subtitle { font-size: 11px; color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        
+        /* Hamburger & Drawer */
+        .hamburger-btn { background: none; border: none; cursor: pointer; display: flex; flex-direction: column; gap: 5px; padding: 5px; }
+        .hamburger-btn span { display: block; width: 24px; height: 3px; background-color: var(--primary); border-radius: 3px; transition: 0.3s; }
+        .side-drawer {
+            position: fixed; top: 0; right: -300px; width: 280px; max-width: 80vw; height: 100vh;
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+            box-shadow: -10px 0 30px rgba(0,0,0,0.1); transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1100; padding: 20px; display: flex; flex-direction: column;
+        }
+        .side-drawer.open { right: 0; }
+        .drawer-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 1px solid var(--border); padding-bottom: 15px; }
+        .close-drawer { background: #f1f5f9; border: none; font-size: 18px; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; color: var(--text-dark); display: flex; align-items: center; justify-content: center; }
+        .drawer-links { display: flex; flex-direction: column; gap: 10px; }
+        .drawer-links button {
+            background: #fff; border: 1px solid var(--border); text-align: left; font-size: 15px; font-weight: 600; 
+            color: var(--text-dark); padding: 14px 16px; border-radius: 10px; cursor: pointer; transition: 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative; width: 100%; height: 50vh; min-height: 350px;
+            background: url('https://i.pinimg.com/originals/2d/87/48/2d87484d2b20716325320629cfcd6c02.gif') center/cover no-repeat;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; color: white; margin-bottom: 30px; border-radius: 0 0 25px 25px; overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .hero-overlay { position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(180deg, rgba(15, 23, 42, 0.6) 0%, rgba(15, 23, 42, 0.9) 100%); z-index: 1; }
+        .hero-content { position: relative; z-index: 2; width: 90%; max-width: 800px; padding: 0 15px; }
+        
+        .typing-container { display: inline-block; width: 100%; overflow: hidden; }
+        .typing-text {
+            font-size: clamp(24px, 7vw, 3.5rem); font-weight: 800; white-space: nowrap; margin: 0 auto;
+            border-right: 4px solid var(--accent); width: fit-content;
+            animation: typing 3s steps(30, end) infinite alternate, blink 0.75s step-end infinite;
+            color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        @keyframes typing { 0% { width: 0; } 50%, 100% { width: 100%; } }
+        @keyframes blink { 50% { border-color: transparent; } }
+
+        .motto-container { height: 40px; overflow: hidden; position: relative; margin-top: 15px; }
+        .motto-list { list-style: none; padding: 0; margin: 0; animation: rotateMottos 12s infinite cubic-bezier(0.65, 0, 0.35, 1); text-align: center; }
+        .motto-list li { height: 40px; line-height: 40px; font-size: clamp(14px, 4vw, 1.2rem); font-weight: 500; color: #cbd5e1; }
+        @keyframes rotateMottos { 0%, 15% { transform: translateY(0); } 20%, 35% { transform: translateY(-40px); } 40%, 55% { transform: translateY(-80px); } 60%, 75% { transform: translateY(-120px); } 80%, 95% { transform: translateY(-160px); } 100% { transform: translateY(0); } }
+
+        /* Global Sections */
+        .section-wrapper { padding: 0 5%; max-width: 1200px; margin: 0 auto 40px; }
+        .section-title { font-size: clamp(20px, 6vw, 26px); font-weight: 800; color: var(--primary); margin: 0 0 5px 0; }
+        .section-subtitle { color: var(--text-light); font-size: clamp(13px, 4vw, 15px); margin: 0 0 25px 0; font-weight: 500; }
+        .trending-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }
+
+        /* Dynamic Grid & Cards */
+        .notes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+        .note-card {
+            background: var(--card-bg); border: 1px solid rgba(255,255,255,0.6); border-radius: 16px; padding: 20px;
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03); cursor: pointer; display: flex; flex-direction: column;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); position: relative; overflow: hidden;
+        }
+        .note-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+            background: var(--accent-gradient); opacity: 0; transition: 0.3s;
+        }
+        .note-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(79, 70, 229, 0.1); border-color: transparent; }
+        .note-card:hover::before { opacity: 1; }
+
+        /* Card Contents (Badges, Headers, Footer) */
+        .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+        .card-cat { background: rgba(79, 70, 229, 0.1); color: var(--accent); font-size: 11px; padding: 4px 10px; border-radius: 20px; font-weight: 700; text-transform: uppercase; }
+        .card-badge { font-size: 11px; padding: 4px 10px; border-radius: 20px; font-weight: 800; text-transform: uppercase; white-space: nowrap; }
+        .trending-badge { background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.2); }
+        .sale-badge { background: rgba(16, 185, 129, 0.1); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.2); }
+        
+        .card-title { font-size: 17px; font-weight: 700; color: var(--primary); margin: 0 0 8px 0; line-height: 1.3; }
+        .card-desc { font-size: 13px; color: var(--text-light); margin: 0 0 15px 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; flex-grow: 1; line-height: 1.5; }
+        
+        .card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 15px; margin-top: auto; }
+        .card-footer-price { font-size: 18px; font-weight: 800; color: var(--primary); }
+        .card-footer-price.free { color: #10b981; }
+
+        /* Store Filters */
+        .filter-scroll { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 15px; margin-bottom: 10px; -ms-overflow-style: none; scrollbar-width: none; }
+        .filter-scroll::-webkit-scrollbar { display: none; }
+        .filter-chip { background: #fff; border: 1px solid var(--border); padding: 8px 18px; border-radius: 25px; font-size: 13px; font-weight: 600; color: var(--text-dark); cursor: pointer; white-space: nowrap; transition: 0.2s; }
+        .filter-chip.active { background: var(--accent-gradient); color: #fff; border-color: transparent; box-shadow: 0 4px 15px rgba(236, 72, 153, 0.25); }
+
+        /* How It Works */
+        .how-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+        .how-card { background: #fff; border-radius: 16px; padding: 25px 20px; text-align: center; border: 1px solid var(--border); }
+        .how-icon { font-size: 28px; background: linear-gradient(135deg, rgba(79,70,229,0.1), rgba(236,72,153,0.1)); width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; border-radius: 50%; margin: 0 auto 15px; color: var(--accent); }
+        
+        /* Bottom Nav App Bar */
+        .bottom-nav {
+            position: fixed; bottom: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            display: flex; justify-content: space-around; align-items: center;
+            border-top: 1px solid rgba(255,255,255,0.4); box-shadow: 0 -5px 25px rgba(0,0,0,0.05); z-index: 999;
+            height: 70px; padding-bottom: env(safe-area-inset-bottom);
+        }
+        .nav-item { display: flex; flex-direction: column; align-items: center; justify-content: center; color: #94a3b8; text-decoration: none; font-size: 11px; font-weight: 700; cursor: pointer; transition: 0.3s; width: 60px; height: 100%; }
+        .nav-item svg { width: 24px; height: 24px; margin-bottom: 4px; fill: currentColor; transition: transform 0.2s; }
+        .nav-item.active { color: var(--accent); }
+        .nav-item.active svg { transform: translateY(-3px) scale(1.1); fill: url(#svg-gradient); }
+
+        /* Modals */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(5px); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 15px; }
+        .modal { background: #fff; padding: 20px; border-radius: 20px; width: 100%; max-width: 450px; position: relative; max-height: 90vh; overflow-y: auto; box-shadow: 0 25px 50px rgba(0,0,0,0.25); animation: scaleUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .modal-xl { max-width: 600px; padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+        @keyframes scaleUp { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        
+        .modal-close { position: absolute; top: 15px; right: 15px; background: rgba(0,0,0,0.05); color: var(--text-dark); border: none; width: 34px; height: 34px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; font-size: 18px; font-weight: bold; transition: 0.2s; }
+        
+        /* Note Details Modal */
+        .modal-scrollable-content { padding: 20px; overflow-y: auto; max-height: calc(90vh - 180px); }
+        .note-detail-banner { width: 100%; height: 180px; object-fit: cover; display: block; border-radius: 20px 20px 0 0; }
+        
+        /* Buttons, Tabs, Inputs */
+        .modal-tabs { display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 1px solid var(--border); }
+        .tab-btn { flex: 1; background: none; border: none; padding: 12px; font-size: 15px; font-weight: 700; color: var(--text-light); cursor: pointer; border-bottom: 3px solid transparent; }
+        .tab-btn.active { color: var(--accent); border-color: var(--accent); }
+
+        .btn { font-family: 'Inter', sans-serif; font-weight: 700; border-radius: 12px; padding: 12px 20px; cursor: pointer; transition: 0.2s; border: none; font-size: 15px; display: inline-flex; justify-content: center; align-items: center; gap: 8px; }
+        .btn-primary { background: var(--accent-gradient); color: #fff; box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3); }
+        .btn-outline { background: #fff; border: 2px solid var(--border); color: var(--text-dark); }
+        .full-width { width: 100%; }
+        
+        .form-group { margin-bottom: 15px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 6px; font-size: 13px; font-weight: 600; color: var(--text-dark); }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px 15px; border: 1.5px solid var(--border); border-radius: 10px; font-size: 14px; background: #f8fafc; }
+        
+        .divider { text-align: center; margin: 15px 0; color: var(--text-light); font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 10px; }
+        .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+        /* Toast */
+        .toast { position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%) translateY(20px); background: #10b981; color: white; padding: 12px 24px; border-radius: 30px; font-size: 14px; font-weight: 600; opacity: 0; transition: 0.3s; z-index: 9999; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+        .toast.error { background: #ef4444; }
+    </style>
 </head>
 
 <body>
+    <!-- SVG Gradient Definition for Active Nav Icons -->
+    <svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
+      <linearGradient id="svg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#4f46e5" />
+        <stop offset="100%" stop-color="#ec4899" />
+      </linearGradient>
+    </svg>
 
-    <!-- ===== NAVBAR ===== -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-inner">
-            <a href="#" class="logo">
-                <span class="logo-icon">📚</span>
-                <span class="logo-text">NotesLeLe</span>
-            </a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#browse">Browse</a></li>
-                <li><a href="#how">How It Works</a></li>
-                <li id="nav-admin-li" style="display:none"><a href="#" onclick="showAdmin()">🛡️ Admin</a></li>
-            </ul>
-            <div class="nav-actions">
-                <div id="auth-btns">
-                    <button class="btn btn-outline" onclick="openModal('login')">Login</button>
-                    <button class="btn btn-primary" onclick="openModal('signup')">Sign Up</button>
-                </div>
-                <div id="user-menu" style="display:none">
-                    <div class="avatar-wrap" onclick="toggleUserDropdown()">
-                        <div class="avatar" id="avatarInitial">U</div>
-                        <span id="userNameDisplay"></span>
-                        <span>▾</span>
-                    </div>
-                    <div class="user-dropdown" id="userDropdown">
-                        <a href="#" onclick="showMyPurchases()">📦 My Purchases</a>
-                        <a id="dropdown-uploads-link" href="#" onclick="showMyUploads()" style="display:none">📤 My
-                            Uploads</a>
-                        <a href="#" onclick="logout()">🚪 Logout</a>
-                    </div>
-                </div>
-                <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()">☰</button>
-            </div>
-        </div>
-    </nav>
+    <!-- Diwali Lights -->
+    <div class="diwali-lights"></div>
 
-    <!-- ===== HERO ===== -->
-    <section class="hero" id="home">
-        <div class="hero-bg-blobs">
-            <div class="blob blob1"></div>
-            <div class="blob blob2"></div>
-            <div class="blob blob3"></div>
+    <!-- ===== HEADER ===== -->
+    <header class="site-header">
+        <div class="header-left">
+            <h1 class="site-title">Notes ki Dukan</h1>
+            <span class="site-subtitle">By Code NEURONS</span>
         </div>
-        <div class="hero-content">
-            <div class="hero-badge">🎓 India's Friendliest Notes Marketplace</div>
-            <h1 class="hero-title">Notes LeLe,<br><span class="accent">Tension DeDe</span> 😄</h1>
-            <p class="hero-sub">Exams ko 😄 — Browse &amp; download quality PDF study notes. Free &amp; Premium. No
-                stress, no tension!</p>
-            <div class="hero-cta">
-                <button class="btn btn-hero"
-                    onclick="document.getElementById('browse').scrollIntoView({behavior:'smooth'})">Browse Notes
-                    📖</button>
-                <button class="btn btn-hero-outline" onclick="openModal('signup')">Join Free 🎓</button>
-            </div>
-            <div class="hero-stats">
-                <div class="stat"><span id="stat-notes">0</span><small>Notes</small></div>
-                <div class="stat"><span id="stat-free">0</span><small>Free</small></div>
-                <div class="stat"><span id="stat-users">0</span><small>Students</small></div>
-            </div>
-        </div>
-        <div class="hero-visual">
-            <div class="floating-card fc1">📘 Physics Notes<br><small>Class 12 – CBSE</small></div>
-            <div class="floating-card fc2">🧮 Maths Formula Sheet<br><small>FREE PDF</small></div>
-            <div class="floating-card fc3">💊 Biology Diagrams<br><small>NEET Ready</small></div>
-        </div>
-    </section>
+        <button class="hamburger-btn" onclick="toggleDrawer()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
 
-    <!-- ===== BROWSE ===== -->
-    <section class="browse-section" id="browse">
-        <div class="container">
-            <div class="section-header">
-                <h2>Browse Notes 📚</h2>
-                <p>Find PDF notes for every subject, every exam, every vibe</p>
+    <!-- Side Drawer -->
+    <div class="side-drawer" id="sideDrawer">
+        <div class="drawer-header">
+            <h2 class="site-title" style="font-size: 18px; background: none; color: var(--primary); -webkit-text-fill-color: var(--primary);">Menu</h2>
+            <button class="close-drawer" onclick="toggleDrawer()">✕</button>
+        </div>
+        
+        <div id="drawer-unauth" class="drawer-links">
+            <button onclick="toggleDrawer(); openModal('authModal'); switchTab('login')">Sign In to Account</button>
+            <button onclick="toggleDrawer(); openModal('authModal'); switchTab('signup')" style="background: var(--accent-gradient); color: #fff; border: none;">Create Free Account ✨</button>
+        </div>
+        
+        <div id="drawer-auth" style="display:none;" class="drawer-links">
+            <div style="background: linear-gradient(135deg, rgba(79,70,229,0.1), rgba(236,72,153,0.1)); padding: 15px; border-radius: 12px; margin-bottom: 10px; border: 1px solid rgba(79,70,229,0.2);">
+                <h4 id="drawerUserName" style="margin: 0 0 4px 0; font-size: 16px; color: var(--primary);">User</h4>
+                <p id="drawerUserEmail" style="margin: 0; font-size: 12px; color: var(--text-light); font-weight: 500;">user@email.com</p>
             </div>
-            <div class="filters">
-                <div class="search-wrap">
-                    <span>🔍</span>
-                    <input type="text" id="searchInput" name='search' placeholder="Search notes, subjects, exams..."
-                        oninput="filterNotes()">
+            <button onclick="toggleDrawer(); switchAppTab('stores')">📚 Browse Store</button>
+            <button onclick="toggleDrawer(); switchAppTab('history')">🛒 My Purchases</button>
+            <button id="drawer-upload-btn" style="display:none" onclick="toggleDrawer(); showMyUploads()">📤 My Uploads</button>
+            <button onclick="toggleDrawer(); logout()" style="color: #ef4444; border-color: #fee2e2; background: #fef2f2; margin-top: auto;">🚪 Log Out</button>
+        </div>
+    </div>
+    <div class="modal-overlay" id="drawerOverlay" style="z-index:1050;" onclick="toggleDrawer()"></div>
+
+    <!-- ==============================================
+         TAB CONTENT 1: HOME (Trending & How it works)
+         ============================================== -->
+    <div id="tab-home" class="app-tab active">
+        <!-- Hero -->
+        <section class="hero-section">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <div class="typing-container">
+                    <h2 class="typing-text">Welcome Everyone</h2>
                 </div>
-                <div class="filter-pills">
-                    <button class="pill active" onclick="setFilter('all', this)">All</button>
-                    <button class="pill" onclick="setFilter('free', this)">🆓 Free</button>
-                    <button class="pill" onclick="setFilter('paid', this)">💎 Premium</button>
-                    <button class="pill" onclick="setFilter('CBSE', this)">CBSE</button>
-                    <button class="pill" onclick="setFilter('JEE', this)">JEE</button>
-                    <button class="pill" onclick="setFilter('NEET', this)">NEET</button>
-                    <button class="pill" onclick="setFilter('College', this)">College</button>
-                    <button class="pill" onclick="setFilter('Other', this)">Other</button>
+                <div class="motto-container">
+                    <ul class="motto-list">
+                        <li>1. Quick & Easy Access ⚡</li>
+                        <li>2. High Quality Materials 🏆</li>
+                        <li>3. Affordable Pricing 💰</li>
+                        <li>4. Trusted by Students 🎓</li>
+                        <li>5. Expert Created Content 🧠</li>
+                    </ul>
                 </div>
-                <select id="sortSelect" class="sort-select" onchange="filterNotes()">
-                    <option value="newest">Newest First</option>
-                    <option value="oldest">Oldest First</option>
-                    <option value="price-low">Price: Low to High</option>
-                    <option value="price-high">Price: High to Low</option>
-                    <option value="popular">Most Popular</option>
-                </select>
             </div>
-            <div class="notes-grid" id="notesGrid">
-                <div class="loading-notes">
-                    <div class="spinner"></div>
-                    <p>Loading notes...</p>
+        </section>
+
+        <!-- Trending -->
+        <div class="section-wrapper">
+            <div class="trending-header">
+                <div>
+                    <h2 class="section-title">🔥 Trending Notes</h2>
+                    <p class="section-subtitle">Most downloaded by top students</p>
                 </div>
+                <button class="btn btn-outline" style="padding: 8px 16px; font-size:13px; border-radius: 20px;" onclick="switchAppTab('stores')">View All →</button>
             </div>
-            <div class="no-notes" id="noNotes" style="display:none">
-                <span>😕</span>
-                <p>No notes found. Try a different search!</p>
+            <div class="notes-grid" id="trendingGrid">
+                <div style="text-align:center; grid-column:1/-1; padding: 20px; color: var(--text-light);">Loading top notes...</div>
             </div>
         </div>
-    </section>
 
-    <!-- ===== HOW IT WORKS ===== -->
-    <section class="how-section" id="how">
-        <div class="container">
-            <div class="section-header light">
-                <h2>How It Works 🚀</h2>
-                <p>Simple as 1-2-3. No tension!</p>
-            </div>
+        <!-- How it works -->
+        <div class="section-wrapper" style="margin-top: 50px;">
+            <h2 class="section-title" style="text-align: center;">How It Works 🚀</h2>
+            <p class="section-subtitle" style="text-align: center;">Pay securely, download instantly.</p>
             <div class="how-grid">
                 <div class="how-card">
                     <div class="how-icon">🔍</div>
-                    <h3>Browse Notes</h3>
-                    <p>Search through our curated collection of PDF notes for CBSE, JEE, NEET, College and more.</p>
+                    <h3>1. Select Notes</h3>
+                    <p>Browse our verified collection of top-tier study materials and PDFs.</p>
                 </div>
                 <div class="how-card">
-                    <div class="how-icon">🛒</div>
-                    <h3>Buy or Get Free</h3>
-                    <p>Free notes are instantly accessible. Premium notes unlock after a quick UPI payment.</p>
+                    <div class="how-icon">💳</div>
+                    <h3>2. Pay Securely</h3>
+                    <p>Instant checkout via UPI, Cards, or NetBanking safely with Cashfree.</p>
                 </div>
                 <div class="how-card">
                     <div class="how-icon">📥</div>
-                    <h3>Download PDF</h3>
-                    <p>Get your notes as a proper PDF file. Study offline, print, share — it's all yours!</p>
+                    <h3>3. Instant Access</h3>
+                    <p>Download directly to your device or read online from your purchases tab.</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- ===== FOOTER ===== -->
-    <footer class="footer">
-        <div class="container footer-inner">
-            <div class="footer-brand">
-                <span class="logo-icon">📚</span>
-                <strong>NotesLeLe</strong>
-                <p>Notes LeLe, Tension DeDe (exams ko 😄)</p>
+    <!-- ==============================================
+         TAB CONTENT 2: STORES (All Notes & Filters)
+         ============================================== -->
+    <div id="tab-stores" class="app-tab">
+        <div class="section-wrapper" style="padding-top: 20px;">
+            <h2 class="section-title">Store Collection 📚</h2>
+            <p class="section-subtitle" style="margin-bottom: 15px;">Explore everything we have for you</p>
+            
+            <div class="filter-scroll">
+                <button class="filter-chip active" onclick="filterNotesByCategory('All', this)">All</button>
+                <button class="filter-chip" onclick="filterNotesByCategory('CBSE', this)">CBSE</button>
+                <button class="filter-chip" onclick="filterNotesByCategory('JEE', this)">JEE</button>
+                <button class="filter-chip" onclick="filterNotesByCategory('NEET', this)">NEET</button>
+                <button class="filter-chip" onclick="filterNotesByCategory('College', this)">College</button>
             </div>
-            <div class="footer-links">
-                <a href="#">About</a><a href="#">Contact</a>
-                <a href="#">Privacy Policy</a><a href="#">Terms</a>
+
+            <div class="notes-grid" id="notesGrid" style="margin-top: 15px;">
+                <div style="text-align:center; grid-column:1/-1; padding: 40px; color: var(--text-light);">Loading store notes...</div>
             </div>
-            <p class="footer-copy">© 2026 NotesLeLe. Made with ❤️ for Indian Students.</p>
+            <div id="noNotes" style="display:none; text-align:center; padding: 40px; color: var(--text-light); background:#fff; border-radius:16px; border:1px dashed var(--border);">No notes found in this category.</div>
         </div>
-    </footer>
+    </div>
 
-    <!-- ===== MODALS ===== -->
+    <!-- ==============================================
+         TAB CONTENT 3: HISTORY (Purchases)
+         ============================================== -->
+    <div id="tab-history" class="app-tab">
+        <div class="section-wrapper" style="padding-top: 20px;">
+            <h2 class="section-title">My Purchases 🛒</h2>
+            <p class="section-subtitle">Your transaction history and access links</p>
+            
+            <div id="historyContent" style="margin-top: 20px;">
+                <div style="text-align:center; padding: 40px; color: var(--text-light);">Checking history...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== BOTTOM APP NAVIGATION ===== -->
+    <nav class="bottom-nav">
+        <a id="nav-home" class="nav-item active" onclick="switchAppTab('home')">
+            <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            Home
+        </a>
+        <a id="nav-stores" class="nav-item" onclick="switchAppTab('stores')">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4v2h16V4zm1 10v-2l-1-5H4l-1 5v2h1v6h10v-6h4v6h2v-6h1zm-9 4H6v-4h6v4z"/></svg>
+            Stores
+        </a>
+        <a id="nav-history" class="nav-item" onclick="switchAppTab('history')">
+            <svg viewBox="0 0 24 24"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg>
+            History
+        </a>
+    </nav>
+
+    <!-- ===== UI MODALS ===== -->
 
     <!-- Auth Modal -->
     <div class="modal-overlay" id="authModal" onclick="closeModal('authModal')">
         <div class="modal" onclick="event.stopPropagation()">
             <button class="modal-close" onclick="closeModal('authModal')">✕</button>
             <div class="modal-tabs">
-                <button class="tab-btn active" id="loginTab" onclick="switchTab('login')">Login</button>
+                <button class="tab-btn active" id="loginTab" onclick="switchTab('login')">Sign In</button>
                 <button class="tab-btn" id="signupTab" onclick="switchTab('signup')">Sign Up</button>
             </div>
+            
             <div id="loginForm">
-                <h2>Welcome Back! 👋</h2>
-                <p class="modal-sub">Login to access your notes</p>
-                <div class="form-group"><label>Email</label><input type="email" id="loginEmail"
-                        placeholder="your@email.com"></div>
-                <div class="form-group"><label>Password</label><input type="password" id="loginPassword"
-                        placeholder="••••••••"></div>
-                <div id="loginError" class="form-error"></div>
-                <button class="btn btn-primary full-width" onclick="loginUser()">Login 🚀</button>
+                <h2 style="margin: 0 0 20px 0; font-size:20px; color:var(--primary);">Welcome Back 👋</h2>
+                <div class="form-group"><label>Email Address</label><input type="email" id="loginEmail" placeholder="you@email.com"></div>
+                <div class="form-group"><label>Password</label><input type="password" id="loginPassword" placeholder="••••••••"></div>
+                <div id="loginError" class="form-error" style="color:#ef4444; font-size:13px; margin-bottom:10px;"></div>
+                <button class="btn btn-primary full-width" onclick="loginUser()">Sign In securely</button>
                 <div class="divider">or</div>
-                <button class="btn btn-google full-width" onclick="loginWithGoogle()">🔍 Continue with Google</button>
+                <button class="btn btn-outline full-width" onclick="loginWithGoogle()">Continue with Google</button>
             </div>
+            
             <div id="signupForm" style="display:none">
-                <h2>Join NotesLeLe! 🎉</h2>
-                <p class="modal-sub">Create your free account</p>
-                <div class="form-group"><label>Full Name</label><input type="text" id="signupName"
-                        placeholder="Rohan Sharma"></div>
-                <div class="form-group"><label>Email</label><input type="email" id="signupEmail"
-                        placeholder="your@email.com"></div>
-                <div class="form-group"><label>Password</label><input type="password" id="signupPassword"
-                        placeholder="Min 6 characters"></div>
-                <div id="signupError" class="form-error"></div>
-                <button class="btn btn-primary full-width" onclick="signupUser()">Create Account 🎓</button>
-                <div class="divider">or</div>
-                <button class="btn btn-google full-width" onclick="loginWithGoogle()">🔍 Continue with Google</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Upload Modal (ADMIN ONLY) -->
-    <div class="modal-overlay" id="uploadModal" onclick="closeModal('uploadModal')">
-        <div class="modal modal-large" onclick="event.stopPropagation()">
-            <button class="modal-close" onclick="closeModal('uploadModal')">✕</button>
-            <h2>Upload Notes PDF 📤</h2>
-            <p class="modal-sub">Admin only — Upload a PDF file for students to purchase or access free</p>
-            <div class="upload-form">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Notes Title *</label>
-                        <input type="text" id="upTitle" placeholder="e.g. Physics Chapter 5 – Thermodynamics">
-                    </div>
-                    <div class="form-group">
-                        <label>Subject *</label>
-                        <input type="text" id="upSubject" placeholder="e.g. Physics, Maths, Biology">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Category *</label>
-                        <select id="upCategory">
-                            <option value="">Select Category</option>
-                            <option value="CBSE">CBSE</option>
-                            <option value="JEE">JEE</option>
-                            <option value="NEET">NEET</option>
-                            <option value="College">College</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Price (₹) — 0 for Free</label>
-                        <input type="number" id="upPrice" placeholder="0" min="0" value="0">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Description *</label>
-                    <textarea id="upDescription" placeholder="What topics are covered? Which exam is it for?"
-                        rows="3"></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Cover Emoji</label>
-                    <input type="text" id="upEmoji" placeholder="📘" maxlength="4" value="📘">
-                </div>
-
-                <!-- PDF Upload Zone -->
-                <div class="form-group">
-                    <label>Upload PDF File * <span class="label-hint">(Max ~700KB per file for best
-                            results)</span></label>
-                    <div class="pdf-drop-zone" id="pdfDropZone"
-                        onclick="document.getElementById('pdfFileInput').click()">
-                        <div class="pdf-drop-inner" id="pdfDropInner">
-                            <span class="pdf-drop-icon">📄</span>
-                            <p>Click to select PDF or drag &amp; drop here</p>
-                            <small>PDF only · Max ~700KB recommended</small>
-                        </div>
-                    </div>
-                    <input type="file" id="pdfFileInput" accept="application/pdf" style="display:none"
-                        onchange="handlePdfSelect(event)">
-                </div>
-
-                <!-- Progress -->
-                <div id="uploadProgress" style="display:none">
-                    <div class="progress-bar-wrap">
-                        <div class="progress-bar" id="progressBar"></div>
-                    </div>
-                    <p class="progress-label" id="progressLabel">Processing PDF...</p>
-                </div>
-
-                <div id="uploadError" class="form-error"></div>
-                <button class="btn btn-primary full-width" id="publishBtn" onclick="uploadNotes()">Publish Notes
-                    🚀</button>
+                <h2 style="margin: 0 0 20px 0; font-size:20px; color:var(--primary);">Join the Dukan ✨</h2>
+                <div class="form-group"><label>Full Name</label><input type="text" id="signupName" placeholder="Rohan Sharma"></div>
+                <div class="form-group"><label>Email Address</label><input type="email" id="signupEmail" placeholder="you@email.com"></div>
+                <div class="form-group"><label>Password</label><input type="password" id="signupPassword" placeholder="Min 6 characters"></div>
+                <div id="signupError" class="form-error" style="color:#ef4444; font-size:13px; margin-bottom:10px;"></div>
+                <button class="btn btn-primary full-width" onclick="signupUser()">Create Free Account</button>
             </div>
         </div>
     </div>
@@ -314,784 +407,482 @@
     <!-- Notes Detail Modal -->
     <div class="modal-overlay" id="noteDetailModal" onclick="closeModal('noteDetailModal')">
         <div class="modal modal-xl" onclick="event.stopPropagation()">
-            <button class="modal-close" onclick="closeModal('noteDetailModal')">✕</button>
+            <button class="modal-close" style="background:rgba(255,255,255,0.9); box-shadow:0 2px 10px rgba(0,0,0,0.1);" onclick="closeModal('noteDetailModal')">✕</button>
             <div id="noteDetailContent"></div>
+        </div>
+    </div>
+
+    <!-- Upload Modal (ADMIN) -->
+    <div class="modal-overlay" id="uploadModal" onclick="closeModal('uploadModal')">
+        <div class="modal" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal('uploadModal')">✕</button>
+            <h2 style="margin:0 0 15px 0">Upload Notes</h2>
+            <div class="upload-form">
+                <div class="form-group"><label>Notes Title</label><input type="text" id="upTitle"></div>
+                <div style="display:flex; gap:10px;">
+                    <div class="form-group" style="flex:1"><label>Subject</label><input type="text" id="upSubject"></div>
+                    <div class="form-group" style="flex:1"><label>Category</label><select id="upCategory"><option value="CBSE">CBSE</option><option value="JEE">JEE</option><option value="NEET">NEET</option><option value="College">College</option><option value="Other">Other</option></select></div>
+                </div>
+                <div class="form-group"><label>Price (₹) — 0 for Free</label><input type="number" id="upPrice" value="0"></div>
+                <div class="form-group"><label>Description</label><textarea id="upDescription" rows="2"></textarea></div>
+                <div class="form-group">
+                    <label>Upload PDF</label>
+                    <div style="border:2px dashed var(--accent); padding:15px; text-align:center; border-radius:12px; cursor:pointer; background:#f0f5ff;" onclick="document.getElementById('pdfFileInput').click()">
+                        <div id="pdfDropInner"><span style="font-size:24px">📄</span><p style="margin:5px 0 0; color:var(--accent); font-weight:600; font-size:13px">Tap to select PDF</p></div>
+                    </div>
+                    <input type="file" id="pdfFileInput" accept="application/pdf" style="display:none" onchange="handlePdfSelect(event)">
+                </div>
+                <button class="btn btn-primary full-width" id="publishBtn" onclick="uploadNotes()">Publish Notes</button>
+            </div>
         </div>
     </div>
 
     <!-- PDF Viewer Modal -->
     <div class="modal-overlay" id="pdfViewerModal" onclick="closeModal('pdfViewerModal')">
-        <div class="modal modal-fullscreen" onclick="event.stopPropagation()">
-            <div class="pdf-viewer-header">
-                <span id="pdfViewerTitle">📄 PDF Viewer</span>
-                <div style="display:flex;gap:8px;align-items:center">
-                    <button class="btn btn-primary btn-sm" onclick="downloadCurrentPdf()">⬇️ Download</button>
-                    <button class="modal-close" style="position:static;width:auto;padding:6px 12px"
-                        onclick="closeModal('pdfViewerModal')">✕ Close</button>
+        <div class="modal" style="max-width:100vw; height:100vh; padding:0; display:flex; flex-direction:column; border-radius:0;" onclick="event.stopPropagation()">
+            <div style="padding:15px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; background:#fff;">
+                <span id="pdfViewerTitle" style="font-weight:700; font-size:14px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:60%;">PDF Viewer</span>
+                <div style="display:flex; gap:8px;">
+                    <button class="btn btn-primary" style="padding:6px 12px; font-size:12px; border-radius:6px;" onclick="downloadCurrentPdf()">⬇️ Download</button>
+                    <button class="btn btn-outline" style="padding:6px 12px; font-size:12px; border-radius:6px;" onclick="closeModal('pdfViewerModal')">✕</button>
                 </div>
             </div>
-            <div class="pdf-viewer-body">
-                <iframe id="pdfViewerFrame" src="" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </div>
-    </div>
-
-    <!-- Purchase Modal -->
-    <div class="modal-overlay" id="purchaseModal" onclick="closeModal('purchaseModal')">
-        <div class="modal" onclick="event.stopPropagation()">
-            <button class="modal-close" onclick="closeModal('purchaseModal')">✕</button>
-            <div id="purchaseContent"></div>
-        </div>
-    </div>
-
-    <!-- My Purchases Modal -->
-    <div class="modal-overlay" id="purchasesModal" onclick="closeModal('purchasesModal')">
-        <div class="modal modal-large" onclick="event.stopPropagation()">
-            <button class="modal-close" onclick="closeModal('purchasesModal')">✕</button>
-            <h2>📦 My Purchases</h2>
-            <div id="purchasesContent">
-                <div class="spinner"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- My Uploads Modal (Admin) -->
-    <div class="modal-overlay" id="myUploadsModal" onclick="closeModal('myUploadsModal')">
-        <div class="modal modal-large" onclick="event.stopPropagation()">
-            <button class="modal-close" onclick="closeModal('myUploadsModal')">✕</button>
-            <h2>📤 My Uploads</h2>
-            <div id="myUploadsContent">
-                <div class="spinner"></div>
-            </div>
+            <iframe id="pdfViewerFrame" src="" style="width:100%; flex-grow:1; border:none; background:#e2e8f0;"></iframe>
         </div>
     </div>
 
     <!-- Admin Modal -->
-    <div class="modal-overlay" id="adminModal" onclick="closeModal('adminModal')">
-        <div class="modal modal-large" onclick="event.stopPropagation()">
-            <button class="modal-close" onclick="closeModal('adminModal')">✕</button>
-            <h2>🛡️ Admin Panel</h2>
-            <div id="adminContent">
-                <div class="spinner"></div>
-            </div>
+    <div class="modal-overlay" id="myUploadsModal" onclick="closeModal('myUploadsModal')">
+        <div class="modal" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal('myUploadsModal')">✕</button>
+            <h2 style="margin:0 0 15px 0">My Uploads</h2>
+            <div id="myUploadsContent" style="max-height: 60vh; overflow-y: auto;"></div>
         </div>
     </div>
 
-    <!-- Toast -->
+    <!-- Toast Notification -->
     <div id="toast" class="toast"></div>
 
+
     <!-- ========================
-     FIREBASE + MAIN LOGIC
-     ======================== -->
+         APP UI SCRIPT (No External Dependencies)
+         ======================== -->
+    <script>
+        window.switchAppTab = (tabId) => {
+            // Toggle Display
+            document.querySelectorAll('.app-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(`tab-${tabId}`).classList.add('active');
+            
+            // Toggle Active Icon State
+            document.querySelectorAll('.bottom-nav .nav-item').forEach(n => n.classList.remove('active'));
+            const targetNav = document.getElementById(`nav-${tabId}`);
+            if(targetNav) targetNav.classList.add('active');
+
+            // Scroll Top
+            window.scrollTo({top: 0, behavior: 'smooth'});
+
+            // Fire History Loader if History tab opened
+            if(tabId === 'history' && window.loadHistoryData) {
+                window.loadHistoryData();
+            }
+        };
+
+        window.openModal = (id) => { 
+            const el = document.getElementById(id);
+            if(el) { el.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+        };
+        window.closeModal = (id) => { 
+            const el = document.getElementById(id);
+            if(el) { el.style.display = 'none'; document.body.style.overflow = 'auto'; }
+        };
+        
+        window.switchTab = (tab) => {
+            if(tab === 'login') {
+                document.getElementById('loginForm').style.display = 'block';
+                document.getElementById('signupForm').style.display = 'none';
+                document.getElementById('loginTab').classList.add('active');
+                document.getElementById('signupTab').classList.remove('active');
+            } else {
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('signupForm').style.display = 'block';
+                document.getElementById('loginTab').classList.remove('active');
+                document.getElementById('signupTab').classList.add('active');
+            }
+        };
+
+        window.showToast = (msg, type = 'success') => {
+            const t = document.getElementById('toast');
+            if(!t) return;
+            t.textContent = msg;
+            t.className = 'toast show ' + (type === 'error' ? 'error' : '');
+            setTimeout(() => { t.classList.remove('show'); }, 3000);
+        };
+
+        window.toggleDrawer = () => {
+            const drawer = document.getElementById('sideDrawer');
+            const overlay = document.getElementById('drawerOverlay');
+            if (drawer.classList.contains('open')) {
+                drawer.classList.remove('open'); overlay.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            } else {
+                drawer.classList.add('open'); overlay.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+        };
+
+        window.currentStoreCategory = 'All';
+        window.filterNotesByCategory = (category, btnElement) => {
+            document.querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
+            btnElement.classList.add('active');
+            window.currentStoreCategory = category;
+            if(typeof window.applyStoreFilter === 'function') window.applyStoreFilter();
+        };
+    </script>
+
+    <!-- ========================
+         FIREBASE + CORE LOGIC
+         ======================== -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-        import {
-            getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
-            signOut, onAuthStateChanged, updateProfile, GoogleAuthProvider, signInWithPopup
-        } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-        import {
-            getFirestore, collection, addDoc, getDocs, getDoc, doc, updateDoc,
-            query, orderBy, where, serverTimestamp, increment, setDoc, deleteDoc
-        } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+        import { getFirestore, collection, addDoc, getDocs, getDoc, doc, updateDoc, query, orderBy, where, serverTimestamp, increment, setDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-        // ============================
-        // 🔥 FIREBASE CONFIG — Replace!
-        // ============================
+        // FIREBASE CREDENTIALS
         const firebaseConfig = {
             apiKey: "AIzaSyCsumr81iMYN_OQnzE7FBWHQGFstx3bg5U",
             authDomain: "noteslele-ef76a.firebaseapp.com",
             projectId: "noteslele-ef76a",
             storageBucket: "noteslele-ef76a.firebasestorage.app",
             messagingSenderId: "948683298473",
-            appId: "1:948683298473:web:e55311f082b2064c8abbb8",
-            measurementId: "G-V821703JLZ"
+            appId: "1:948683298473:web:e55311f082b2064c8abbb8"
         };
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
         const gProvider = new GoogleAuthProvider();
+        const ADMIN_EMAILS = ["admin@noteslele.com"]; 
 
-        // 🔑 CHANGE THIS to your email(s)
-        const ADMIN_EMAILS = ["admin@noteslele.com"];
-
-        // ============================
-        // STATE
-        // ============================
         let currentUser = null;
-        let allNotes = [];
-        let activeFilter = 'all';
+        let allNotesCache = [];
         let selectedPdfBase64 = null;
         let selectedPdfName = '';
         let currentPdfBase64 = null;
         let currentPdfTitle = '';
 
-        // ============================
-        // AUTH STATE
-        // ============================
         onAuthStateChanged(auth, async (user) => {
             currentUser = user;
             if (user) {
-                document.getElementById('auth-btns').style.display = 'none';
-                document.getElementById('user-menu').style.display = 'flex';
-                document.getElementById('userNameDisplay').textContent = user.displayName?.split(' ')[0] || 'User';
-                document.getElementById('avatarInitial').textContent = (user.displayName?.[0] || user.email[0]).toUpperCase();
+                document.getElementById('drawer-unauth').style.display = 'none';
+                document.getElementById('drawer-auth').style.display = 'flex';
+                document.getElementById('drawerUserName').textContent = user.displayName || 'User';
+                document.getElementById('drawerUserEmail').textContent = user.email;
 
                 const isAdmin = ADMIN_EMAILS.includes(user.email);
-                document.getElementById('nav-admin-li').style.display = isAdmin ? 'block' : 'none';
-                document.getElementById('dropdown-uploads-link').style.display = isAdmin ? 'block' : 'none';
+                document.getElementById('drawer-upload-btn').style.display = isAdmin ? 'block' : 'none';
 
                 await setDoc(doc(db, 'users', user.uid), {
-                    name: user.displayName || 'Anonymous',
-                    email: user.email,
-                    lastSeen: serverTimestamp()
+                    name: user.displayName || 'Anonymous', email: user.email, lastSeen: serverTimestamp()
                 }, { merge: true });
             } else {
-                document.getElementById('auth-btns').style.display = 'flex';
-                document.getElementById('user-menu').style.display = 'none';
-                document.getElementById('nav-admin-li').style.display = 'none';
-                document.getElementById('dropdown-uploads-link').style.display = 'none';
+                document.getElementById('drawer-unauth').style.display = 'flex';
+                document.getElementById('drawer-auth').style.display = 'none';
             }
-            loadStats();
         });
 
-        // ============================
-        // AUTH FUNCTIONS
-        // ============================
+        // --- AUTH ---
         window.loginUser = async () => {
             const email = document.getElementById('loginEmail').value.trim();
             const pass = document.getElementById('loginPassword').value;
-            const errEl = document.getElementById('loginError');
-            errEl.textContent = '';
-            if (!email || !pass) { errEl.textContent = 'Please fill all fields.'; return; }
-            try {
-                await signInWithEmailAndPassword(auth, email, pass);
-                closeModal('authModal'); showToast('Welcome back! 👋');
-            } catch (e) { errEl.textContent = friendlyError(e.code); }
+            if (!email || !pass) return showToast('Fill all fields', 'error');
+            try { await signInWithEmailAndPassword(auth, email, pass); closeModal('authModal'); showToast('Signed In successfully!'); }
+            catch (e) { document.getElementById('loginError').textContent = 'Invalid credentials. Please try again.'; }
         };
-
         window.signupUser = async () => {
             const name = document.getElementById('signupName').value.trim();
             const email = document.getElementById('signupEmail').value.trim();
             const pass = document.getElementById('signupPassword').value;
-            const errEl = document.getElementById('signupError');
-            errEl.textContent = '';
-            if (!name || !email || !pass) { errEl.textContent = 'Please fill all fields.'; return; }
-            if (pass.length < 6) { errEl.textContent = 'Password must be at least 6 characters.'; return; }
+            if (!name || !email || !pass) return showToast('Fill all fields', 'error');
             try {
                 const cred = await createUserWithEmailAndPassword(auth, email, pass);
                 await updateProfile(cred.user, { displayName: name });
-                closeModal('authModal'); showToast('Account created! Welcome 🎉');
-            } catch (e) { errEl.textContent = friendlyError(e.code); }
+                closeModal('authModal'); showToast('Account created securely!');
+            } catch (e) { document.getElementById('signupError').textContent = 'Failed. Password must be 6+ chars.'; }
         };
-
         window.loginWithGoogle = async () => {
-            try {
-                await signInWithPopup(auth, gProvider);
-                closeModal('authModal'); showToast('Logged in with Google! 🎉');
-            } catch (e) { showToast('Google login failed. Try again.', 'error'); }
+            try { await signInWithPopup(auth, gProvider); closeModal('authModal'); showToast('Logged in via Google!'); } 
+            catch (e) { showToast('Google login failed.', 'error'); }
         };
+        window.logout = async () => { await signOut(auth); showToast('Logged out.'); };
 
-        window.logout = async () => {
-            await signOut(auth);
-            document.getElementById('userDropdown').classList.remove('open');
-            showToast('Logged out. Bye! 👋');
-            loadNotes();
-        };
 
-        // ============================
-        // PDF SELECT HANDLER
-        // ============================
-        window.handlePdfSelect = (event) => {
-            const file = event.target.files[0];
-            if (!file) return;
-            if (file.type !== 'application/pdf') { showToast('Please select a PDF file only.', 'error'); return; }
-
-            selectedPdfName = file.name;
-            const sizeMB = (file.size / 1024 / 1024).toFixed(2);
-
-            document.getElementById('pdfDropInner').innerHTML = `
-      <span class="pdf-drop-icon">✅</span>
-      <p><strong>${file.name}</strong></p>
-      <small>${sizeMB} MB selected — Click to change</small>`;
-            document.getElementById('pdfDropZone').classList.add('pdf-selected');
-
-            const reader = new FileReader();
-            reader.onload = (e) => { selectedPdfBase64 = e.target.result.split(',')[1]; };
-            reader.readAsDataURL(file);
-        };
-
-        // Drag and drop
-        document.addEventListener('DOMContentLoaded', () => {
-            const zone = document.getElementById('pdfDropZone');
-            if (!zone) return;
-            zone.addEventListener('dragover', (e) => { e.preventDefault(); zone.classList.add('drag-over'); });
-            zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
-            zone.addEventListener('drop', (e) => {
-                e.preventDefault(); zone.classList.remove('drag-over');
-                const f = e.dataTransfer.files[0];
-                if (f) { document.getElementById('pdfFileInput').files = e.dataTransfer.files; window.handlePdfSelect({ target: { files: e.dataTransfer.files } }); }
-            });
-        });
-
-        // ============================
-        // UPLOAD NOTES (ADMIN ONLY)
-        // PDF → base64 → split into 500KB chunks → subcollection
-        // ============================
-        window.openUploadModal = () => {
-            if (!currentUser || !ADMIN_EMAILS.includes(currentUser.email)) {
-                showToast('Only admin can upload notes! 🛡️', 'error'); return;
-            }
-            openModal('uploadModal');
-        };
-
-        window.uploadNotes = async () => {
-            if (!currentUser || !ADMIN_EMAILS.includes(currentUser.email)) {
-                showToast('Unauthorized!', 'error'); return;
-            }
-            const title = document.getElementById('upTitle').value.trim();
-            const subject = document.getElementById('upSubject').value.trim();
-            const category = document.getElementById('upCategory').value;
-            const price = parseFloat(document.getElementById('upPrice').value) || 0;
-            const description = document.getElementById('upDescription').value.trim();
-            const emoji = document.getElementById('upEmoji').value.trim() || '📘';
-            const errEl = document.getElementById('uploadError');
-            errEl.textContent = '';
-
-            if (!title || !subject || !category || !description) { errEl.textContent = 'Please fill all required fields.'; return; }
-            if (!selectedPdfBase64) { errEl.textContent = 'Please select a PDF file.'; return; }
-
-            document.getElementById('uploadProgress').style.display = 'block';
-            document.getElementById('publishBtn').disabled = true;
-            setProgress(10, 'Creating note entry...');
-
-            try {
-                // 1. Create the parent note document
-                const noteRef = await addDoc(collection(db, 'notes'), {
-                    title, subject, category, price, description, emoji,
-                    authorId: currentUser.uid,
-                    authorName: currentUser.displayName || 'Admin',
-                    authorEmail: currentUser.email,
-                    isFree: price === 0,
-                    approved: true,
-                    downloads: 0,
-                    pdfName: selectedPdfName,
-                    totalChunks: 0,
-                    createdAt: serverTimestamp()
-                });
-
-                setProgress(25, 'Splitting PDF into chunks...');
-
-                // 2. Split base64 string into ~500K char chunks
-                const CHUNK_SIZE = 500000;
-                const chunks = [];
-                for (let i = 0; i < selectedPdfBase64.length; i += CHUNK_SIZE) {
-                    chunks.push(selectedPdfBase64.slice(i, i + CHUNK_SIZE));
-                }
-
-                setProgress(35, `Uploading ${chunks.length} chunk(s)...`);
-
-                // 3. Store each chunk as a sub-document
-                for (let i = 0; i < chunks.length; i++) {
-                    await setDoc(doc(db, 'notes', noteRef.id, 'pdfChunks', `chunk_${i}`), {
-                        index: i,
-                        data: chunks[i]
-                    });
-                    const pct = 35 + Math.floor(((i + 1) / chunks.length) * 55);
-                    setProgress(pct, `Uploaded chunk ${i + 1} of ${chunks.length}...`);
-                }
-
-                // 4. Update total chunk count on parent doc
-                await updateDoc(doc(db, 'notes', noteRef.id), { totalChunks: chunks.length });
-
-                setProgress(100, 'Published! 🎉');
-                setTimeout(() => {
-                    closeModal('uploadModal');
-                    resetUploadForm();
-                    showToast('Notes published! 🎉');
-                    loadNotes();
-                }, 800);
-
-            } catch (e) {
-                console.error(e);
-                errEl.textContent = 'Upload failed: ' + e.message;
-                document.getElementById('publishBtn').disabled = false;
-                document.getElementById('uploadProgress').style.display = 'none';
-            }
-        };
-
-        function setProgress(pct, label) {
-            document.getElementById('progressBar').style.width = pct + '%';
-            document.getElementById('progressLabel').textContent = label;
-        }
-
-        function resetUploadForm() {
-            ['upTitle', 'upSubject', 'upDescription'].forEach(id => document.getElementById(id).value = '');
-            document.getElementById('upPrice').value = '0';
-            document.getElementById('upEmoji').value = '📘';
-            document.getElementById('upCategory').value = '';
-            document.getElementById('pdfFileInput').value = '';
-            document.getElementById('pdfDropInner').innerHTML = `
-      <span class="pdf-drop-icon">📄</span>
-      <p>Click to select PDF or drag &amp; drop here</p>
-      <small>PDF only · Max ~700KB recommended</small>`;
-            document.getElementById('pdfDropZone').classList.remove('pdf-selected');
-            document.getElementById('uploadProgress').style.display = 'none';
-            document.getElementById('publishBtn').disabled = false;
-            document.getElementById('progressBar').style.width = '0%';
-            selectedPdfBase64 = null; selectedPdfName = '';
-        }
-
-        // ============================
-        // LOAD NOTES
-        // ============================
-        async function loadNotes() {
+        // --- NOTES RENDER LOGIC ---
+        async function loadData() {
             try {
                 const q = query(collection(db, 'notes'), where('approved', '==', true), orderBy('createdAt', 'desc'));
                 const snap = await getDocs(q);
-                allNotes = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-                filterNotes();
-            } catch (e) {
-                console.error(e);
-                document.getElementById('notesGrid').innerHTML =
-                    '<p style="grid-column:1/-1;text-align:center;color:#e74c3c;padding:40px">Error loading notes. Check Firestore rules &amp; composite index (approved + createdAt).</p>';
+                allNotesCache = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+                
+                // Render Trending
+                const trending = [...allNotesCache].sort((a, b) => (b.downloads || 0) - (a.downloads || 0)).slice(0, 3);
+                document.getElementById('trendingGrid').innerHTML = trending.length 
+                    ? trending.map(n => noteCardHTML(n, true)).join('') 
+                    : '<p style="grid-column:1/-1;text-align:center">No trending notes yet.</p>';
+
+                // Render Store
+                window.applyStoreFilter();
+
+            } catch (e) { 
+                document.getElementById('notesGrid').innerHTML = '<p style="text-align:center">Failed to load from server.</p>'; 
             }
         }
 
-        async function loadStats() {
-            try {
-                const snap = await getDocs(collection(db, 'notes'));
-                const approved = snap.docs.filter(d => d.data().approved);
-                const freeCount = approved.filter(d => d.data().isFree).length;
-                const usersSnap = await getDocs(collection(db, 'users'));
-                animateCount('stat-notes', approved.length);
-                animateCount('stat-free', freeCount);
-                animateCount('stat-users', usersSnap.size);
-            } catch (e) { }
-        }
-
-        window.setFilter = (filter, el) => {
-            activeFilter = filter;
-            document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
-            el.classList.add('active');
-            filterNotes();
-        };
-
-        window.filterNotes = () => {
-            const search = document.getElementById('searchInput').value.toLowerCase();
-            const sort = document.getElementById('sortSelect').value;
-            let filtered = allNotes.filter(n => {
-                const matchSearch = !search ||
-                    n.title.toLowerCase().includes(search) ||
-                    n.subject.toLowerCase().includes(search) ||
-                    n.category.toLowerCase().includes(search);
-                const matchFilter =
-                    activeFilter === 'all' ? true :
-                        activeFilter === 'free' ? n.isFree :
-                            activeFilter === 'paid' ? !n.isFree :
-                                n.category === activeFilter;
-                return matchSearch && matchFilter;
-            });
-            if (sort === 'oldest') filtered.sort((a, b) => (a.createdAt?.seconds || 0) - (b.createdAt?.seconds || 0));
-            else if (sort === 'price-low') filtered.sort((a, b) => a.price - b.price);
-            else if (sort === 'price-high') filtered.sort((a, b) => b.price - a.price);
-            else if (sort === 'popular') filtered.sort((a, b) => (b.downloads || 0) - (a.downloads || 0));
-            renderNotes(filtered);
-        };
-
-        function renderNotes(notes) {
+        window.applyStoreFilter = () => {
+            const cat = window.currentStoreCategory || 'All';
+            const filtered = cat === 'All' ? allNotesCache : allNotesCache.filter(n => n.category === cat);
+            
             const grid = document.getElementById('notesGrid');
             const noNotes = document.getElementById('noNotes');
-            if (!notes.length) { grid.innerHTML = ''; noNotes.style.display = 'flex'; return; }
-            noNotes.style.display = 'none';
-            grid.innerHTML = notes.map(noteCard).join('');
-        }
+            
+            if (!filtered.length) { 
+                grid.innerHTML = ''; noNotes.style.display = 'block'; 
+            } else {
+                noNotes.style.display = 'none';
+                grid.innerHTML = filtered.map(n => noteCardHTML(n, false)).join(''); // False = Top Sale Badge
+            }
+        };
 
-        function noteCard(n) {
+        // UI Card Builder with amount & badge logic
+        function noteCardHTML(n, isTrending = false) {
             const isFree = n.price === 0;
+            const priceText = isFree ? 'FREE' : `₹${n.price}`;
+            const btnText = isFree ? 'Get Now' : 'Buy Now';
+            
+            // Render specific sticker based on section
+            const stickerHtml = isTrending 
+                ? `<span class="card-badge trending-badge">🔥 Trending</span>` 
+                : `<span class="card-badge sale-badge">📈 Top Sale</span>`;
+
             return `
-    <div class="note-card" onclick="openNoteDetail('${n.id}')">
-      <div class="card-emoji">${n.emoji || '📘'}</div>
-      <div class="card-badge ${isFree ? 'badge-free' : 'badge-paid'}">${isFree ? '🆓 Free' : `₹${n.price}`}</div>
-      <div class="card-cat">${n.category}</div>
-      <h3 class="card-title">${n.title}</h3>
-      <p class="card-sub">📚 ${n.subject}</p>
-      <p class="card-desc">${n.description.substring(0, 90)}${n.description.length > 90 ? '…' : ''}</p>
-      <div class="card-footer">
-        <span class="card-author">📄 PDF Notes</span>
-        <span class="card-downloads">⬇️ ${n.downloads || 0}</span>
-      </div>
-    </div>`;
+                <div class="note-card" onclick="openNoteDetail('${n.id}')">
+                    <div class="card-header">
+                        <span class="card-cat">${n.category} &bull; ${n.subject}</span>
+                        ${stickerHtml}
+                    </div>
+                    <h3 class="card-title">${n.title}</h3>
+                    <p class="card-desc">${n.description}</p>
+                    <div class="card-footer">
+                        <span class="card-footer-price ${isFree ? 'free' : ''}">${priceText}</span>
+                        <button class="btn btn-primary" style="padding: 8px 16px; font-size:12px; border-radius: 8px; box-shadow:none;">${btnText}</button>
+                    </div>
+                </div>
+            `;
         }
 
-        // ============================
-        // NOTE DETAIL
-        // ============================
+        // --- DYNAMIC DETAIL MODAL ---
         window.openNoteDetail = async (noteId) => {
             openModal('noteDetailModal');
-            document.getElementById('noteDetailContent').innerHTML = '<div class="spinner" style="margin:60px auto"></div>';
+            const contentDiv = document.getElementById('noteDetailContent');
+            contentDiv.innerHTML = '<div style="text-align:center; padding:50px 20px;">Fetching secure details...</div>';
+            
             try {
                 const snap = await getDoc(doc(db, 'notes', noteId));
-                if (!snap.exists()) { document.getElementById('noteDetailContent').innerHTML = '<p>Note not found.</p>'; return; }
+                if (!snap.exists()) { contentDiv.innerHTML='<p>Error: Note removed.</p>'; return; }
                 const n = { id: snap.id, ...snap.data() };
 
-                let hasPurchased = false, purchaseStatus = null;
+                let hasPurchased = false;
                 if (currentUser) {
                     const pDoc = await getDoc(doc(db, 'purchases', `${currentUser.uid}_${noteId}`));
-                    if (pDoc.exists()) { hasPurchased = true; purchaseStatus = pDoc.data().status; }
+                    if (pDoc.exists() && pDoc.data().status === 'approved') hasPurchased = true;
                 }
-                const isAdmin = currentUser && ADMIN_EMAILS.includes(currentUser.email);
-                const canAccess = n.isFree || (hasPurchased && purchaseStatus === 'approved') || isAdmin;
-                const accessLabel = isAdmin ? '(Admin)' : n.isFree ? '(Free)' : '(Purchased ✅)';
+                const isAdminUser = currentUser && ADMIN_EMAILS.includes(currentUser.email);
+                const canAccess = n.isFree || hasPurchased || isAdminUser;
+                const bannerImg = 'https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=600&q=80';
 
-                document.getElementById('noteDetailContent').innerHTML = `
-        <div class="detail-header">
-          <div class="detail-emoji">${n.emoji}</div>
-          <div>
-            <span class="card-cat">${n.category}</span>
-            <h2>${n.title}</h2>
-            <p class="card-sub">📚 ${n.subject} &nbsp;·&nbsp; ⬇️ ${n.downloads || 0} downloads &nbsp;·&nbsp; 📄 PDF</p>
-          </div>
-        </div>
-        <p class="detail-desc">${n.description}</p>
+                contentDiv.innerHTML = `
+                    <img src="${bannerImg}" class="note-detail-banner" alt="Notes Banner">
+                    
+                    <div class="modal-scrollable-content">
+                        <div style="margin-bottom: 20px;">
+                            <span class="card-cat" style="display:inline-block; margin-bottom:12px; font-size:12px;">${n.category} • ${n.subject}</span>
+                            <h2 style="margin: 0 0 8px 0; color: var(--primary); font-size:clamp(18px, 5vw, 24px); font-weight:800; line-height:1.2;">${n.title}</h2>
+                            <p style="color: var(--text-light); margin:0; font-size:13px; font-weight:500;">Format: Secure PDF Document</p>
+                        </div>
+                        
+                        <div style="background:var(--bg-color); padding:15px; border-radius:12px; border:1px solid var(--border); margin-bottom:25px;">
+                            <h4 style="margin: 0 0 8px 0; font-size: 14px; color: var(--text-dark);">Description</h4>
+                            <p style="line-height: 1.6; color: var(--text-light); margin:0; font-size:13px; white-space:pre-wrap;">${n.description}</p>
+                        </div>
 
-        ${canAccess ? `
-          <div class="pdf-access-section">
-            <div class="pdf-access-badge">📄 PDF Notes Unlocked ${accessLabel}</div>
-            <div class="pdf-action-btns">
-              <button class="btn btn-primary btn-lg" onclick="viewPdf('${noteId}','${escAttr(n.title)}')">
-                👁️ View PDF
-              </button>
-              <button class="btn btn-outline btn-lg" onclick="downloadPdf('${noteId}','${escAttr(n.title)}')">
-                ⬇️ Download PDF
-              </button>
-            </div>
-            <p class="pdf-hint">📱 Tip: "View PDF" opens in browser. "Download" saves the file to your device.</p>
-          </div>
-        ` : hasPurchased && purchaseStatus === 'pending' ? `
-          <div class="purchase-prompt pending-prompt">
-            <div style="font-size:2.5rem">⏳</div>
-            <h3>Payment Under Review</h3>
-            <p>Your payment is being verified by admin. Notes will unlock shortly!</p>
-            <small>Check back in a few minutes.</small>
-          </div>
-        ` : hasPurchased && purchaseStatus === 'rejected' ? `
-          <div class="purchase-prompt pending-prompt" style="border-color:#FFD6D6;background:#FFF5F5">
-            <div style="font-size:2.5rem">❌</div>
-            <h3>Payment Rejected</h3>
-            <p>Your payment could not be verified. Please retry or contact admin.</p>
-            <button class="btn btn-primary" onclick="initPurchase('${n.id}','${escAttr(n.title)}',${n.price})">Try Again</button>
-          </div>
-        ` : `
-          <div class="purchase-prompt">
-            <div class="purchase-price">₹${n.price}</div>
-            <p>Purchase to unlock &amp; download the full PDF notes!</p>
-            ${currentUser
-                        ? `<button class="btn btn-primary btn-lg" onclick="initPurchase('${n.id}','${escAttr(n.title)}',${n.price})">🔓 Buy Now – ₹${n.price}</button>`
-                        : `<button class="btn btn-primary btn-lg" onclick="closeModal('noteDetailModal');openModal('login')">Login to Purchase</button>`}
-          </div>
-        `}`;
-            } catch (e) {
-                console.error(e);
-                document.getElementById('noteDetailContent').innerHTML = '<p style="color:red">Error loading note.</p>';
-            }
+                        ${canAccess ? `
+                            <div style="background: linear-gradient(135deg, #f0fdf4, #dcfce7); padding: 20px; border-radius: 16px; border: 1px solid #bbf7d0; text-align:center; box-shadow:0 4px 15px rgba(22, 163, 74, 0.1);">
+                                <h4 style="margin: 0 0 15px 0; color: #15803d; font-size:16px;">✅ Document Unlocked</h4>
+                                <button class="btn btn-primary full-width" style="margin-bottom:10px; background:#16a34a; box-shadow:0 4px 15px rgba(22, 163, 74,0.3)" onclick="viewPdf('${noteId}','${escAttr(n.title)}')">👁️ Read Online</button>
+                                <button class="btn btn-outline full-width" style="border-color:#16a34a; color:#16a34a;" onclick="downloadPdf('${noteId}','${escAttr(n.title)}')">⬇️ Download PDF</button>
+                            </div>
+                        ` : `
+                            <div style="background: #fff; padding: 20px; border-radius: 16px; border: 2px dashed var(--accent); text-align: center;">
+                                <div style="font-size:24px; font-weight:800; color:var(--primary); margin-bottom:5px;">₹${n.price}</div>
+                                <p style="margin:0 0 20px 0; color: var(--text-light); font-size:12px; font-weight:600;">Secure gateway by Cashfree Payments</p>
+                                
+                                ${currentUser 
+                                    ? `<button class="btn btn-primary full-width" onclick="initCashfreePurchase('${n.id}','${escAttr(n.title)}',${n.price})">Continue with order</button>` 
+                                    : `
+                                    <div style="padding: 15px; border-radius: 12px; background: rgba(79,70,229,0.05); text-align:left;">
+                                        <h4 style="margin: 0 0 8px 0; color: var(--accent); font-size:14px;">Authentication Required 🔒</h4>
+                                        <p style="font-size: 12px; color: var(--text-light); margin: 0 0 15px 0;">Please log in to purchase or access these premium notes.</p>
+                                        <div style="display:flex; gap:10px; flex-direction:column;">
+                                            <button class="btn btn-primary full-width" onclick="closeModal('noteDetailModal'); openModal('authModal'); switchTab('login')">Sign In</button>
+                                            <button class="btn btn-outline full-width" onclick="closeModal('noteDetailModal'); openModal('authModal'); switchTab('signup')">Create Account</button>
+                                        </div>
+                                    </div>
+                                `}
+                            </div>
+                        `}
+                    </div>
+                `;
+            } catch (e) { contentDiv.innerHTML = '<p style="text-align:center; padding:20px;">Error loading data.</p>'; }
         };
 
-        // ============================
-        // FETCH PDF (REASSEMBLE CHUNKS)
-        // ============================
-        async function fetchPdfBase64(noteId) {
-            const snap = await getDoc(doc(db, 'notes', noteId));
-            if (!snap.exists()) throw new Error('Note not found');
-            const totalChunks = snap.data().totalChunks || 0;
-            if (totalChunks === 0) throw new Error('No PDF data found for this note');
-
-            let base64 = '';
-            for (let i = 0; i < totalChunks; i++) {
-                const cSnap = await getDoc(doc(db, 'notes', noteId, 'pdfChunks', `chunk_${i}`));
-                if (!cSnap.exists()) throw new Error(`PDF chunk ${i} missing`);
-                base64 += cSnap.data().data;
-            }
-            return base64;
-        }
-
-        function base64ToObjectUrl(base64) {
-            const byteChars = atob(base64);
-            const bytes = new Uint8Array(byteChars.length);
-            for (let i = 0; i < byteChars.length; i++) bytes[i] = byteChars.charCodeAt(i);
-            return URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' }));
-        }
-
-        window.viewPdf = async (noteId, title) => {
-            showToast('Loading PDF... ⏳');
-            try {
-                const base64 = await fetchPdfBase64(noteId);
-                await updateDoc(doc(db, 'notes', noteId), { downloads: increment(1) });
-                const url = base64ToObjectUrl(base64);
-                currentPdfBase64 = base64;
-                currentPdfTitle = title;
-                document.getElementById('pdfViewerTitle').textContent = '📄 ' + title;
-                document.getElementById('pdfViewerFrame').src = url;
-                closeModal('noteDetailModal');
-                openModal('pdfViewerModal');
-            } catch (e) {
-                console.error(e);
-                showToast('Error loading PDF. Try again.', 'error');
-            }
-        };
-
-        window.downloadPdf = async (noteId, title) => {
-            showToast('Preparing download... ⏳');
-            try {
-                const base64 = await fetchPdfBase64(noteId);
-                await updateDoc(doc(db, 'notes', noteId), { downloads: increment(1) });
-                triggerDownload(base64, title);
-                showToast('PDF downloaded! 📥');
-            } catch (e) {
-                console.error(e);
-                showToast('Error downloading PDF.', 'error');
-            }
-        };
-
-        window.downloadCurrentPdf = () => {
-            if (!currentPdfBase64) return;
-            triggerDownload(currentPdfBase64, currentPdfTitle);
-        };
-
-        function triggerDownload(base64, title) {
-            const url = base64ToObjectUrl(base64);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = title.replace(/[^a-z0-9]/gi, '_') + '.pdf';
-            document.body.appendChild(a); a.click();
-            document.body.removeChild(a); URL.revokeObjectURL(url);
-        }
-
-        // ============================
-        // PURCHASE FLOW
-        // ============================
-        window.initPurchase = (noteId, title, price) => {
-            closeModal('noteDetailModal');
-            document.getElementById('purchaseContent').innerHTML = `
-      <div class="purchase-modal-inner">
-        <div class="purchase-emoji">💳</div>
-        <h2>Complete Purchase</h2>
-        <p>You're buying: <strong>${title}</strong></p>
-        <div class="purchase-price-big">₹${price}</div>
-        <div class="upi-section">
-          <p><strong>Pay via UPI to:</strong></p>
-          <div class="upi-id">
-            sakshamshrivastav@barodampay
-            <button onclick="navigator.clipboard.writeText('sakshamshrivastav@barodampay');showToast('UPI ID copied! 📋')">📋</button>
-          </div>
-          <div class="qr-placeholder">📱<br><strong>Scan QR to Pay</strong><br><small><img style='height:20vh' src='phonepe.png' alt='UPI QR Code'></small></div>
-          <p class="upi-note">After payment, enter your UTR / Transaction ID:</p>
-          <input type="text" id="utrInput" placeholder="e.g. 423876543210" class="utr-input">
-        </div>
-        <div id="purchaseError" class="form-error"></div>
-        <button class="btn btn-primary full-width" onclick="confirmPurchase('${noteId}','${escAttr(title)}',${price})">✅ I've Paid – Submit</button>
-        <p class="purchase-note">⚡ PDF unlocks after admin verifies your payment (usually fast!)</p>
-      </div>`;
-            openModal('purchaseModal');
-        };
-
-        window.confirmPurchase = async (noteId, title, price) => {
+        // --- PAYMENT LOGIC ---
+        window.initCashfreePurchase = async (noteId, title, price) => {
             if (!currentUser) return;
-            const utr = document.getElementById('utrInput').value.trim();
-            if (!utr) { document.getElementById('purchaseError').textContent = 'Please enter your transaction ID.'; return; }
+            showToast('Initializing gateway... please wait');
+            
             try {
                 await setDoc(doc(db, 'purchases', `${currentUser.uid}_${noteId}`), {
                     userId: currentUser.uid, userName: currentUser.displayName,
                     userEmail: currentUser.email, noteId, title, price,
-                    utr, status: 'pending', createdAt: serverTimestamp()
+                    status: 'pending', createdAt: serverTimestamp()
                 });
-                await addDoc(collection(db, 'purchaseRequests'), {
-                    userId: currentUser.uid, userName: currentUser.displayName,
-                    userEmail: currentUser.email, noteId, title, price,
-                    utr, status: 'pending', createdAt: serverTimestamp()
+
+                const response = await fetch('config.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'create_order', noteId, price, userId: currentUser.uid, customerName: currentUser.displayName, customerEmail: currentUser.email })
                 });
-                closeModal('purchaseModal');
-                showToast('Payment submitted! Waiting for approval ✅');
-            } catch (e) {
-                document.getElementById('purchaseError').textContent = 'Error submitting. Try again.';
-                console.error(e);
-            }
+                
+                const data = await response.json();
+                if (data.payment_session_id) {
+                    const cashfree = Cashfree({ mode: "sandbox" }); 
+                    cashfree.checkout({ paymentSessionId: data.payment_session_id }).then(async (result) => {
+                        if (result.error) { showToast('Payment failed or cancelled', 'error'); }
+                        if (result.paymentDetails) {
+                            await updateDoc(doc(db, 'purchases', `${currentUser.uid}_${noteId}`), { status: 'approved' });
+                            showToast('Payment Successful! Notes Unlocked ✨');
+                            closeModal('noteDetailModal'); openNoteDetail(noteId);
+                        }
+                    });
+                } else { showToast('Backend error mapping to Cashfree.', 'error'); }
+            } catch (e) { showToast('Gateway integration pending/failed.', 'error'); }
         };
 
-        // ============================
-        // MY PURCHASES
-        // ============================
-        window.showMyPurchases = async () => {
-            closeUserDropdown();
-            if (!currentUser) { openModal('login'); return; }
-            openModal('purchasesModal');
+        // --- HISTORY VIEW HANDLER ---
+        window.loadHistoryData = async () => {
+            const histDiv = document.getElementById('historyContent');
+            
+            if (!currentUser) { 
+                histDiv.innerHTML = `
+                    <div style="text-align:center; padding:40px 15px; background:#fff; border-radius:16px; border:1px dashed var(--border);">
+                        <div style="font-size:40px; margin-bottom:15px;">🔒</div>
+                        <p style="color:var(--primary); font-weight:700; font-size:16px;">Authentication Required</p>
+                        <p style="color:var(--text-light); font-size:13px; margin-bottom: 20px;">Sign in to view your transaction history</p>
+                        <button class="btn btn-primary" onclick="openModal('authModal'); switchTab('login')">Sign In to Continue</button>
+                    </div>`; 
+                return; 
+            }
+            
+            histDiv.innerHTML = '<div style="text-align:center; padding: 40px; color: var(--text-light);">Checking history...</div>';
+            
             try {
                 const q = query(collection(db, 'purchases'), where('userId', '==', currentUser.uid));
                 const snap = await getDocs(q);
-                if (snap.empty) {
-                    document.getElementById('purchasesContent').innerHTML = '<p class="empty-state">😕 No purchases yet. Go grab some notes!</p>'; return;
+                if (snap.empty) { 
+                    histDiv.innerHTML = `
+                        <div style="text-align:center; padding:50px 15px; background:#fff; border-radius:16px; border:1px dashed var(--border);">
+                            <div style="font-size:45px; margin-bottom:15px; opacity:0.8;">📭</div>
+                            <p style="color:var(--primary); font-weight:700; font-size:16px;">No history available</p>
+                            <p style="color:var(--text-light); font-size:13px; margin-bottom: 20px;">You haven't made any purchases yet.</p>
+                            <button class="btn btn-outline" onclick="switchAppTab('stores');">Browse Stores</button>
+                        </div>`; 
+                    return; 
                 }
-                const html = snap.docs.map(d => {
+                
+                histDiv.innerHTML = snap.docs.map(d => {
                     const p = d.data();
-                    const sc = p.status === 'approved' ? 'status-approved' : p.status === 'rejected' ? 'status-rejected' : 'status-pending';
-                    const lb = p.status === 'approved' ? '✅ Approved' : p.status === 'rejected' ? '❌ Rejected' : '⏳ Pending';
-                    return `<div class="purchase-item">
-          <div><strong>📄 ${p.title}</strong><br><small>₹${p.price} · UTR: ${p.utr}</small></div>
-          <span class="status-badge ${sc}">${lb}</span>
-          ${p.status === 'approved' ? `<button class="btn btn-sm btn-primary" onclick="closeModal('purchasesModal');openNoteDetail('${p.noteId}')">View PDF</button>` : ''}
-        </div>`;
+                    return `
+                    <div style="border:1px solid var(--border); background:#fff; padding:15px; margin-bottom:15px; border-radius:12px; display:flex; justify-content:space-between; align-items:center; box-shadow: 0 4px 10px rgba(0,0,0,0.02);">
+                        <div>
+                            <strong style="font-size:15px; color:var(--primary); display:block; margin-bottom:4px;">${p.title}</strong>
+                            <span style="font-size:12px; color:var(--text-light); font-weight:600; padding:2px 8px; background:var(--bg-color); border-radius:4px;">₹${p.price} • ${p.status.toUpperCase()}</span>
+                        </div>
+                        ${p.status === 'approved' ? `<button class="btn btn-primary" style="padding:8px 12px; font-size:12px; border-radius:8px;" onclick="openNoteDetail('${p.noteId}')">Access</button>` : ''}
+                    </div>`;
                 }).join('');
-                document.getElementById('purchasesContent').innerHTML = `<div class="purchases-list">${html}</div>`;
-            } catch (e) {
-                document.getElementById('purchasesContent').innerHTML = '<p>Error loading purchases.</p>';
-            }
+            } catch (e) { histDiv.innerHTML = '<p style="text-align:center; color:red;">Error loading records.</p>'; }
         };
 
-        // ============================
-        // MY UPLOADS (Admin only)
-        // ============================
-        window.showMyUploads = async () => {
-            closeUserDropdown();
+        // --- FILE HANDLING & ADMIN ---
+        window.handlePdfSelect = (event) => {
+            const file = event.target.files[0]; if (!file) return;
+            selectedPdfName = file.name;
+            document.getElementById('pdfDropInner').innerHTML = `<span style="font-size:24px">✅</span><p style="margin:5px 0 0; color:#10b981; font-weight:600; font-size:12px">${file.name}</p>`;
+            const r = new FileReader(); r.onload = (e) => { selectedPdfBase64 = e.target.result.split(',')[1]; }; r.readAsDataURL(file);
+        };
+        
+        window.uploadNotes = async () => {
             if (!currentUser || !ADMIN_EMAILS.includes(currentUser.email)) return;
-            openModal('myUploadsModal');
+            const title = document.getElementById('upTitle').value.trim(); const subject = document.getElementById('upSubject').value.trim();
+            const category = document.getElementById('upCategory').value; const price = parseFloat(document.getElementById('upPrice').value) || 0;
+            const description = document.getElementById('upDescription').value.trim();
+            if (!title || !subject || !category || !description || !selectedPdfBase64) return showToast('Fill all fields', 'error');
+
             try {
-                const q = query(collection(db, 'notes'), where('authorId', '==', currentUser.uid));
-                const snap = await getDocs(q);
-                if (snap.empty) {
-                    document.getElementById('myUploadsContent').innerHTML =
-                        `<p class="empty-state">📭 No uploads yet.</p>
-           <button class="btn btn-primary" onclick="closeModal('myUploadsModal');openUploadModal()">Upload First Notes</button>`;
-                    return;
-                }
-                const html = snap.docs.map(d => {
-                    const n = { id: d.id, ...d.data() };
-                    return `<div class="purchase-item">
-          <div>
-            <strong>${n.emoji} ${n.title}</strong><br>
-            <small>📚 ${n.subject} · 🏷️ ${n.category} · ${n.isFree ? '🆓 Free' : '💰 ₹' + n.price} · ⬇️ ${n.downloads || 0} · 📄 ${n.totalChunks || 0} chunks</small>
-          </div>
-          <button class="btn btn-sm btn-outline" onclick="deleteNote('${n.id}', ${n.totalChunks || 0})">🗑️ Delete</button>
-        </div>`;
-                }).join('');
-                document.getElementById('myUploadsContent').innerHTML =
-                    `<div style="margin-bottom:14px">
-           <button class="btn btn-primary btn-sm" onclick="closeModal('myUploadsModal');openUploadModal()">+ Upload New Notes</button>
-         </div>
-         <div class="purchases-list">${html}</div>`;
-            } catch (e) {
-                document.getElementById('myUploadsContent').innerHTML = '<p>Error loading uploads.</p>';
-            }
+                const noteRef = await addDoc(collection(db, 'notes'), { title, subject, category, price, description, authorId: currentUser.uid, authorName: currentUser.displayName || 'Admin', isFree: price === 0, approved: true, downloads: 0, pdfName: selectedPdfName, totalChunks: 0, createdAt: serverTimestamp() });
+                const chunks = []; for (let i = 0; i < selectedPdfBase64.length; i += 500000) chunks.push(selectedPdfBase64.slice(i, i + 500000));
+                for (let i = 0; i < chunks.length; i++) await setDoc(doc(db, 'notes', noteRef.id, 'pdfChunks', `chunk_${i}`), { index: i, data: chunks[i] });
+                await updateDoc(doc(db, 'notes', noteRef.id), { totalChunks: chunks.length });
+                closeModal('uploadModal'); showToast('Published! 🎉'); loadData();
+            } catch (e) { showToast('Upload failed', 'error'); }
         };
 
-        window.deleteNote = async (noteId, totalChunks) => {
-            if (!confirm('Delete this note and its PDF permanently?')) return;
+        async function fetchPdfBase64(noteId) {
+            const snap = await getDoc(doc(db, 'notes', noteId)); const tc = snap.data().totalChunks || 0; let b64 = '';
+            for (let i = 0; i < tc; i++) { const cSnap = await getDoc(doc(db, 'notes', noteId, 'pdfChunks', `chunk_${i}`)); b64 += cSnap.data().data; }
+            return b64;
+        }
+
+        window.viewPdf = async (noteId, title) => {
+            showToast('Loading... ⏳');
             try {
-                showToast('Deleting...');
-                for (let i = 0; i < totalChunks; i++) {
-                    await deleteDoc(doc(db, 'notes', noteId, 'pdfChunks', `chunk_${i}`));
-                }
-                await deleteDoc(doc(db, 'notes', noteId));
-                showToast('Note deleted ✅');
-                showMyUploads(); loadNotes();
-            } catch (e) { showToast('Error deleting note.', 'error'); }
+                const b = await fetchPdfBase64(noteId); await updateDoc(doc(db, 'notes', noteId), { downloads: increment(1) });
+                const bytes = Uint8Array.from(atob(b), c => c.charCodeAt(0));
+                const url = URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' }));
+                currentPdfBase64 = b; currentPdfTitle = title;
+                document.getElementById('pdfViewerTitle').textContent = title;
+                document.getElementById('pdfViewerFrame').src = url;
+                closeModal('noteDetailModal'); openModal('pdfViewerModal');
+            } catch (e) { showToast('Read error.', 'error'); }
         };
 
-        // ============================
-        // ADMIN PANEL
-        // ============================
-        window.showAdmin = async () => {
-            if (!currentUser || !ADMIN_EMAILS.includes(currentUser.email)) return;
-            openModal('adminModal');
+        window.downloadPdf = async (noteId, title) => {
+            showToast('Preparing offline file... ⏳');
             try {
-                const allNotesSnap = await getDocs(collection(db, 'notes'));
-                const usersSnap = await getDocs(collection(db, 'users'));
-                const purchQ = query(collection(db, 'purchaseRequests'), where('status', '==', 'pending'));
-                const purchSnap = await getDocs(purchQ);
-                const liveNotes = allNotesSnap.docs.filter(d => d.data().approved).length;
-
-                let html = `
-        <div class="admin-stats">
-          <div class="admin-stat"><span>${liveNotes}</span><small>Live Notes</small></div>
-          <div class="admin-stat"><span>${purchSnap.size}</span><small>Pending Payments</small></div>
-          <div class="admin-stat"><span>${usersSnap.size}</span><small>Total Users</small></div>
-          <div class="admin-stat">
-            <span><button class="btn btn-primary btn-sm" onclick="closeModal('adminModal');openUploadModal()">+ Upload</button></span>
-            <small>New Notes</small>
-          </div>
-        </div>
-        <h3>💳 Pending Payment Approvals</h3>`;
-
-                if (purchSnap.empty) {
-                    html += '<p class="empty-state">✅ All clear! No pending payments.</p>';
-                } else {
-                    html += purchSnap.docs.map(d => {
-                        const p = { id: d.id, ...d.data() };
-                        return `<div class="purchase-item">
-            <div>
-              <strong>📄 ${p.title}</strong><br>
-              <small>👤 ${p.userName} &lt;${p.userEmail}&gt;<br>
-              💰 ₹${p.price} &nbsp;·&nbsp; UTR: <strong style="color:var(--primary)">${p.utr}</strong></small>
-            </div>
-            <button class="btn btn-sm btn-primary" onclick="approvePurchase('${p.id}','${p.userId}','${p.noteId}')">✅ Approve</button>
-            <button class="btn btn-sm btn-outline" onclick="rejectPurchase('${p.id}','${p.userId}','${p.noteId}')">❌ Reject</button>
-          </div>`;
-                    }).join('');
-                }
-
-                html += `<h3 style="margin-top:24px">👥 Users (${usersSnap.size})</h3>`;
-                html += usersSnap.docs.slice(0, 15).map(d => {
-                    const u = d.data();
-                    return `<div class="purchase-item"><div>👤 <strong>${u.name}</strong><br><small>${u.email}</small></div></div>`;
-                }).join('');
-
-                document.getElementById('adminContent').innerHTML = html;
-            } catch (e) {
-                console.error(e);
-                document.getElementById('adminContent').innerHTML = '<p>Error loading admin panel.</p>';
-            }
+                const b = await fetchPdfBase64(noteId); await updateDoc(doc(db, 'notes', noteId), { downloads: increment(1) });
+                triggerDownload(b, title); showToast('Download Starting ⬇️');
+            } catch (e) { showToast('Download error.', 'error'); }
         };
+        window.downloadCurrentPdf = () => { if (currentPdfBase64) triggerDownload(currentPdfBase64, currentPdfTitle); };
+        
+        function triggerDownload(b64, title) {
+            const bytes = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+            const url = URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' }));
+            const a = document.createElement('a'); a.href = url; a.download = title.replace(/[^a-z0-9]/gi, '_') + '.pdf';
+            document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+        }
 
-        window.approvePurchase = async (reqId, userId, noteId) => {
-            await updateDoc(doc(db, 'purchaseRequests', reqId), { status: 'approved' });
-            await updateDoc(doc(db, 'purchases', `${userId}_${noteId}`), { status: 'approved' });
-            showToast('Payment approved! User can now access PDF ✅');
-            showAdmin();
-        };
-
-        window.rejectPurchase = async (reqId, userId, noteId) => {
-            await updateDoc(doc(db, 'purchaseRequests', reqId), { status: 'rejected' });
-            await updateDoc(doc(db, 'purchases', `${userId}_${noteId}`), { status: 'rejected' });
-            showToast('Payment rejected.');
-            showAdmin();
-        };
-
-        // ============================
-        // HELPERS
-        // ============================
         function escAttr(s) { return (s || '').replace(/'/g, "\\'").replace(/"/g, '&quot;'); }
-
-        function friendlyError(code) {
-            return ({
-                'auth/user-not-found': 'No account found with this email.',
-                'auth/wrong-password': 'Incorrect password.',
-                'auth/email-already-in-use': 'Email already in use.',
-                'auth/weak-password': 'Password must be at least 6 characters.',
-                'auth/invalid-email': 'Invalid email address.',
-                'auth/invalid-credential': 'Invalid email or password.',
-            })[code] || 'Something went wrong. Try again.';
-        }
-
-        function animateCount(id, target) {
-            const el = document.getElementById(id); if (!el) return;
-            let cur = 0; const step = Math.max(1, Math.ceil(target / 30));
-            const t = setInterval(() => { cur = Math.min(cur + step, target); el.textContent = cur; if (cur >= target) clearInterval(t); }, 40);
-        }
-
-        // Boot
-        loadNotes();
-        loadStats();
+        loadData(); // initial fetch
     </script>
-    <script src="app.js"></script>
 </body>
-
 </html>
