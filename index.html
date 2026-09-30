@@ -756,7 +756,7 @@
                     status: 'pending', createdAt: serverTimestamp()
                 });
 
-                const response = await fetch('config.php', {
+                const response = await fetch('/.netlify/functions/createOrder', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ action: 'create_order', noteId, price, userId: currentUser.uid, customerName: currentUser.displayName, customerEmail: currentUser.email })
