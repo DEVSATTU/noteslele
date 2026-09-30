@@ -1,5 +1,4 @@
 exports.handler = async (event, context) => {
-    // Sirf POST request allow karein
     if (event.httpMethod !== 'POST') {
         return { statusCode: 405, body: 'Method Not Allowed' };
     }
@@ -11,16 +10,13 @@ exports.handler = async (event, context) => {
             return { statusCode: 400, body: JSON.stringify({ error: "Invalid Action Request" }) };
         }
 
-        // APNI CASHFREE KEYS YAHA DAALEIN 👇
-        const appId = '6985583cfdb99d02be7d5592a4855896';
+        // APNI LIVE CASHFREE KEYS YAHA DAALEIN 👇
+        const appId = '6985583cfdb99d02be7d5592a4855896'; 
         const secretKey = 'cfsk_ma_prod_0cc076c7389a82fb89666c709ed4cf6a_e9933647';
-        const environment = 'sandbox'; // Live hone par 'production' karein
+        
+        // LIVE URL SET KIYA GAYA HAI 👇
+        const baseUrl = "https://api.cashfree.com/pg/orders";
 
-        const baseUrl = environment === 'sandbox' 
-            ? "https://sandbox.cashfree.com/pg/orders" 
-            : "https://api.cashfree.com/pg/orders";
-
-        // Unique Order ID banayein
         const orderId = "ORDER_" + data.noteId.replace(/[^a-zA-Z0-9]/g, '').substring(0, 10) + "_" + Date.now();
 
         const payload = {
@@ -39,7 +35,6 @@ exports.handler = async (event, context) => {
             order_note: "Payment for Notes ID: " + data.noteId
         };
 
-        // Cashfree API call
         const response = await fetch(baseUrl, {
             method: 'POST',
             headers: {
@@ -64,7 +59,7 @@ exports.handler = async (event, context) => {
         } else {
             return {
                 statusCode: response.status,
-                body: JSON.stringify({ error: "Cashfree Order Creation Failed", details: result })
+                body: JSON.stringify({ error: "Cashfree Order Failed", details: result })
             };
         }
     } catch (error) {
