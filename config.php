@@ -14,8 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 // ==========================================
 // 1. CASHFREE CREDENTIALS CONFIGURATION
 // ==========================================
-$app_id = 'YOUR_CASHFREE_APP_ID';
-$secret_key = 'YOUR_CASHFREE_SECRET_KEY';
+$app_id = '6985583cfdb99d02be7d5592a4855896';
+$secret_key = 'cfsk_ma_prod_0cc076c7389a82fb89666c709ed4cf6a_e9933647';
 
 // Change to 'production' when going live
 $environment = 'sandbox'; 
