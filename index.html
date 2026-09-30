@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Cashfree SDK -->
+    <!-- Cashfree SDK (V3) -->
     <script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
 
     <!-- Dynamic & Colorful App Styles -->
@@ -35,14 +35,6 @@
             color: var(--text-dark); margin: 0; padding-bottom: 75px; 
             overflow-x: hidden; width: 100vw; min-height: 100vh;
         }
-        
-        /* Diwali Lights */
-        .diwali-lights {
-            position: absolute; top: 0; left: 0; right: 0; height: 35px;
-            background: url('https://i.pinimg.com/originals/93/9e/d9/939ed9f5799a4c1598ce30e9d6d87178.png') repeat-x top center;
-            background-size: auto 100%; z-index: 1000; pointer-events: none;
-            opacity: 0.9;
-        }
 
         /* App Tabs Logic */
         .app-tab { display: none; animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
@@ -52,11 +44,11 @@
         /* Header (Glassmorphism) */
         .site-header {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 5% 15px; 
-            background: rgba(255, 255, 255, 0.7);
+            padding: 15px 5%; 
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(255,255,255,0.5);
-            position: sticky; top: 0; z-index: 100; padding-top: 35px; 
+            position: sticky; top: 0; z-index: 100;
             box-shadow: 0 4px 20px rgba(0,0,0,0.03);
         }
         .header-left { display: flex; flex-direction: column; }
@@ -93,7 +85,7 @@
             position: relative; width: 100%; height: 50vh; min-height: 350px;
             background: url('https://i.pinimg.com/originals/2d/87/48/2d87484d2b20716325320629cfcd6c02.gif') center/cover no-repeat;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            text-align: center; color: white; margin-bottom: 30px; border-radius: 0 0 25px 25px; overflow: hidden;
+            text-align: center; color: white; margin-bottom: 0px; border-radius: 0 0 25px 25px; overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
         .hero-overlay { position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(180deg, rgba(15, 23, 42, 0.6) 0%, rgba(15, 23, 42, 0.9) 100%); z-index: 1; }
@@ -113,6 +105,18 @@
         .motto-list { list-style: none; padding: 0; margin: 0; animation: rotateMottos 12s infinite cubic-bezier(0.65, 0, 0.35, 1); text-align: center; }
         .motto-list li { height: 40px; line-height: 40px; font-size: clamp(14px, 4vw, 1.2rem); font-weight: 500; color: #cbd5e1; }
         @keyframes rotateMottos { 0%, 15% { transform: translateY(0); } 20%, 35% { transform: translateY(-40px); } 40%, 55% { transform: translateY(-80px); } 60%, 75% { transform: translateY(-120px); } 80%, 95% { transform: translateY(-160px); } 100% { transform: translateY(0); } }
+
+        /* Diwali Lights (Bottom of Hero Image) */
+        .diwali-lights {
+            width: 100%; height: 35px;
+            background: url('https://i.pinimg.com/originals/93/9e/d9/939ed9f5799a4c1598ce30e9d6d87178.png') repeat-x top center;
+            background-size: auto 100%;
+            position: relative; z-index: 10;
+            margin-top: -5px; /* Overlaps slightly with the curved edge */
+            margin-bottom: 30px; /* Provides space for next section */
+            pointer-events: none;
+            filter: drop-shadow(0px 3px 6px rgba(255, 105, 180, 0.4)); /* Subtle RGB Glow */
+        }
 
         /* Global Sections */
         .section-wrapper { padding: 0 5%; max-width: 1200px; margin: 0 auto 40px; }
@@ -217,9 +221,6 @@
       </linearGradient>
     </svg>
 
-    <!-- Diwali Lights -->
-    <div class="diwali-lights"></div>
-
     <!-- ===== HEADER ===== -->
     <header class="site-header">
         <div class="header-left">
@@ -262,7 +263,7 @@
          TAB CONTENT 1: HOME (Trending & How it works)
          ============================================== -->
     <div id="tab-home" class="app-tab active">
-        <!-- Hero -->
+        <!-- Hero Section -->
         <section class="hero-section">
             <div class="hero-overlay"></div>
             <div class="hero-content">
@@ -280,6 +281,9 @@
                 </div>
             </div>
         </section>
+
+        <!-- RGB Diwali Lights fixed EXACTLY below Hero Image -->
+        <div class="diwali-lights"></div>
 
         <!-- Trending -->
         <div class="section-wrapper">
@@ -756,6 +760,7 @@
                     status: 'pending', createdAt: serverTimestamp()
                 });
 
+                // NETLIFY API FETCH FOR CASHFREE SESSION
                 const response = await fetch('/.netlify/functions/createOrder', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -763,8 +768,12 @@
                 });
                 
                 const data = await response.json();
+                console.log("Backend Response:", data); // Check browser console if it fails
+
                 if (data.payment_session_id) {
-                    const cashfree = Cashfree({ mode: "sandbox" }); 
+                    // LIVE PRODUCTION MODE ACTIVATED HERE
+                    const cashfree = Cashfree({ mode: "production" }); 
+                    
                     cashfree.checkout({ paymentSessionId: data.payment_session_id }).then(async (result) => {
                         if (result.error) { showToast('Payment failed or cancelled', 'error'); }
                         if (result.paymentDetails) {
@@ -773,8 +782,14 @@
                             closeModal('noteDetailModal'); openNoteDetail(noteId);
                         }
                     });
-                } else { showToast('Backend error mapping to Cashfree.', 'error'); }
-            } catch (e) { showToast('Gateway integration pending/failed.', 'error'); }
+                } else { 
+                    alert("Order creation failed: " + (data.error || JSON.stringify(data)));
+                    showToast('Backend error mapping to Cashfree.', 'error'); 
+                }
+            } catch (e) { 
+                console.error(e);
+                showToast('Gateway integration pending/failed.', 'error'); 
+            }
         };
 
         // --- HISTORY VIEW HANDLER ---
